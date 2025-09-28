@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library App</title>
+</head>
+<body>
+    <h1>📚 Library App</h1>
+
+    <h2>All Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong>  
+                by {{ book.author.name }}  
+                (Published: {{ book.published }})  
+                <br>
+                Categories:
+                {% for cat in book.categories.all %}
+                    {{ cat.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

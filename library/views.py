@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Book, Category
 
-# Create your views here.
+def home(request):
+    books = Book.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'library/home.html', {'books': books, 'categories': categories})
